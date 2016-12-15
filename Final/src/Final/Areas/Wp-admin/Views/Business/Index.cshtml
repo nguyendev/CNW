@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Final.Models.BlogBusiness>
+
+@{
+    ViewData["Title"] = "Index";
+   // Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="UpdateBusiness">Cap nhat</a>
+</p>
+<div>
+    @*@Html.Raw(TempData["err"])*@
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BusinessId">Edit</a> |
+                    <a asp-action="Index" asp-route-id="@item.BusinessCode" asp-controller="Permission" asp-area="admin">Danh sách các action</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BusinessId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
