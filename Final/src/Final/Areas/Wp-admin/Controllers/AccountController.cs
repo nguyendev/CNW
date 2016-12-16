@@ -11,7 +11,7 @@ using Final.Areas.Admin.ViewModels;
 
 namespace Final.Areas.Admin.Controllers
 {
-    [Area("quanlywebsite")]
+    [Area("wp-admin")]
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;

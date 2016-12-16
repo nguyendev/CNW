@@ -1,19 +1,58 @@
 ﻿@model Final.Models.ApplicationUser
-<div class="bg-primary panel-body"><h4>Edit User</h4></div>
-<div asp-validation-summary="All" class="text-danger"></div>
-<form asp-action="Edit" method="post">
-    <div class="form-group">
-        <label asp-for="Id"></label>
-        <input asp-for="Id" class="form-control" disabled />
+@{ 
+    ViewData["Title"] = "Chỉnh sửa người dùng";
+}
+<section class="content-header">
+    <h1>
+        Chỉnh sửa người dùng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Quản trị</a></li>
+        <li class="active">Quản lý người dùng</li>
+        <li class="activi">Chỉnh sửa người dùng</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Chỉnh sửa người dùng</h3>
+                                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                        <form asp-action="Edit" method="post">
+                                            <div class="form-group">
+                                                <label asp-for="Id"></label>
+                                                <input asp-for="Id" class="form-control" disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Email"></label>
+                                                <input asp-for="Email" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input name="password" class="form-control" />
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <a asp-action="Index" class="btn btn-default">Cancel</a>
+                                        </form>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input name="password" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-action="Index" class="btn btn-default">Cancel</a>
-</form>
+</section>
+

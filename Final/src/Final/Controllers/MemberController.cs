@@ -15,7 +15,7 @@ using Final.Services;
 namespace Final.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class MemberController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -23,7 +23,7 @@ namespace Final.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
-        public AccountController(
+        public MemberController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
@@ -34,7 +34,7 @@ namespace Final.Controllers
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
-            _logger = loggerFactory.CreateLogger<AccountController>();
+            _logger = loggerFactory.CreateLogger<MemberController>();
         }
 
         //
@@ -315,12 +315,12 @@ namespace Final.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+                return RedirectToAction(nameof(MemberController.ResetPasswordConfirmation), "Account");
             }
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+                return RedirectToAction(nameof(MemberController.ResetPasswordConfirmation), "Account");
             }
             AddErrors(result);
             return View();

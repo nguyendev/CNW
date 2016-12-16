@@ -2,108 +2,233 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+        <div class="info_message"></div>
+        <center>
+            <div id="logo">
+                <img src="~/Behind/img/btn5.png" style="margin:10px;width:651px;height:111px;" alt="Behind the Name">
+                <div>Thư viện mã nguồn mở về tên Tiếng Việt</div>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+            <form method="get" action="http://www.behindthename.com/names/search.php" style="margin:20px;">
+                <div id="main_search_box">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="terms" id="main_search" autofocus="" class="ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span></td>
+                                <td><input type="image" src="~/Behind/img/search_header.png" alt="Search" id="main_search_button"></td>
+                                <td>
+                                    <div id="searchsettings_container">
+                                        <input type="image" src="~/Behind/img/gear_header.png" alt="Search Settings" id="main_search_settings" onclick="return false;">
+                                        @*<ul id="searchsettings_menu" class="ui-menu ui-widget ui-widget-content ui-corner-all ui-menu-icons" role="menu" tabindex="0">
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;&#39;);" id="ui-id-1" class="ui-corner-all" tabindex="-1" role="menuitem"><span class="ui-icon ui-icon-check"></span>search names</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;m&#39;);" id="ui-id-2" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search meanings</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;p&#39;);" id="ui-id-3" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search popularity</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;f&#39;);" id="ui-id-4" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search namesakes</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;y&#39;);" id="ui-id-5" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search name days</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;r&#39;);" id="ui-id-6" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search related names</a></li>
+                                            <li class="ui-menu-item" role="presentation"><a href="http://www.behindthename.com/" onclick="return searchsetting(this, &#39;g&#39;);" id="ui-id-7" class="ui-corner-all" tabindex="-1" role="menuitem"><span></span>search glossary</a></li>
+                                        </ul>*@
+                                    </div>
+                                    <input type="hidden" name="type" value="" id="nmd">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+            <script type="text/javascript">
+            $(function() {
+	            set_search_autocomplete("#main_search");
+            });
+            </script>
+            <div class="letterlinks">
+                <a href="http://www.behindthename.com/names/letter/a">A</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/b">B</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/c">C</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/d">D</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/e">E</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/f">F</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/g">G</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/h">H</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/i">I</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/j">J</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/k">K</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/l">L</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/m">M</a>&nbsp; <a href="http://www.behindthename.com/names/letter/n">N</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/o">O</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/p">P</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/q">Q</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/r">R</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/s">S</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/t">T</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/u">U</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/v">V</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/w">W</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/x">X</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/y">Y</a>&nbsp;&nbsp;<a href="http://www.behindthename.com/names/letter/z">Z</a>
+            </div>
+            <div class="genderlinks">
+                <img src="~/Behind/img/masculine.png" style="height:15px;width:15px;" alt="Masculine">&nbsp;&nbsp;<a href="http://www.behindthename.com/names/gender/masculine">Nam</a> &nbsp; &nbsp;
+                <img src="~/Behind/img/feminine.png" style="height:15px;width13px;" alt="Feminine">&nbsp;&nbsp;<a href="http://www.behindthename.com/names/gender/feminine">Nữ</a>
+            </div>
+            @*<div class="usagelinks">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><a href="http://www.behindthename.com/names/usage/english">English Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/french">French Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/german">German Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/italian">Italian Names</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://www.behindthename.com/names/usage/spanish">Spanish Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/arabic">Arabic Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/indian">Indian Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/irish">Irish Names</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://www.behindthename.com/names/usage/mythology">Mythology Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/biblical">Biblical Names</a></td>
+                            <td><a href="http://www.behindthename.com/names/usage/african">African Names</a></td>
+                            <td><b><a href="http://www.behindthename.com/names/list">More ...</a></b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
+            <table style="width:100%" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td style="width:50%;vertical-align:top;padding:10px;">
+                            <h1 class="bigheading">Tên hay mỗi ngày</h1>
+                            <div style="padding:10px 20px;">
+                                <table cellpadding="0" cellspacing="0" style="width:100%">
+                                    <tbody>
+                                        <tr><td><span style="font-size:18px;font-weight:bold;">AN</span></td><td align="right" valign="top" nowrap=""><i><a href="http://www.behindthename.com/notd/">Tên trước đó</a></i></td></tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                @*<div class="nameinfo" style="padding-left:30px;">
+                                                    <div class="namesub">
+                                                        <span class="info">
+                                                            <span class="masc">Masculine</span>
+                                                        </span>
+                                                    </div><div class="namesub"><span class="info"><a href="http://www.behindthename.com/names/usage/greek-mythology" class="usg">Greek Mythology</a></span></div>
+                                                </div>*@
+                                                Nói đến sự bình yên, an lành, an nhiên; mang đến cho bé sự che chở, bảo vệ, may mắn và xua tan những tai ương, hiểm họa.
+                                                <br>&nbsp;&nbsp;&nbsp;<a href="http://www.behindthename.com/name/zeus">more...</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h1 class="bigheading" style="margin-top:30px">Popular Features</h1>
+                            <div style="padding:10px 20px;">
+                                <!--table style="width:100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                <td style="width:33%" align="right"><a href="/bb/" class="quick">Message Boards</a></td>
+                                <td style="width:33%" align="center"><a href="/random/" class="quick">Random Name</a></td>
+                                <td style="width:33%" align="left"><a href="http://surnames.behindthename.com" class="quick" style="background-color:#efffef">Surnames</a></td>
+                                </tr>
+                                <tr>
+                                <td colspan="3" align="center"><div style="padding-top:10px">NEW: <a href="/info/newlook">this site's updated look</a></div></td>
+                                </tr>
+                                </table-->
+                                <center>
+                                    <div style="min-width:30%;display:inline-block"><a href="http://www.behindthename.com/bb/" class="quick">Message Boards</a></div>
+                                    <div style="min-width:30%;display:inline-block"><a href="http://www.behindthename.com/random/" class="quick">Random Name</a></div>
+                                    <div style="min-width:30%;display:inline-block"><a href="http://surnames.behindthename.com/" class="quick" style="background-color:#efffef">Surnames</a></div>
+                                </center>
+                            </div>
+                        </td>
+                        <td style="width:50%;vertical-align:top;padding:10px;">
+                                <h1 class="bigheading" style="position:relative;">
+                                <form method="get" action="http://www.behindthename.com/" style="position:absolute;right:10px;top:6px;padding:0px;">
+                                    <select id="popcode" style="font-size:12px;margin:0px; color:black;" onchange="pop_swap(this);">
+                                        <option value="ki">
+                                            Kinh
+                                        </option>
+                                        <option value="ta">
+                                            Tày
+                                        </option>
+                                        <option value="th">
+                                            Thái
+                                        </option>
+                                        <option value="mu">
+                                            Mường
+                                        </option>
+                                        <option value="km">
+                                            Khơ Me
+                                        </option>
+                                        <option value="hm">
+                                            H'Mông
+                                        </option>
+                                        <option value="nu">
+                                            Nùng
+                                        </option>
+                                        <option value="ho">
+                                            Hoa
+                                        </option>
+                                        <option value="da">
+                                            Dao
+                                        </option>
+                                        <option value="gi">
+                                            Gia Rai
+                                        </option>
+                                        <option value="ed">
+                                            Ê Đê
+                                        </option>
+                                        <option value="ba">
+                                            Ba Na
+                                        </option>
+                                        <option value="xd">
+                                            Xơ Đăng
+                                        </option>
+                                        <option value="sa">
+                                            Sán Chay
+                                        </option>
+                                        <option value="co">
+                                            Cơ Ho
+                                        </option>
+                                        <option value="ch">
+                                            Chăm
+                                        </option>
+                                        <option value="sa">
+                                            Sán Dìu
+                                        </option>
+                                        <option value="hr">
+                                            Hrê
+                                        </option>
+                                        <option value="ra">
+                                            Ra Glai
+                                        </option>
+                                        <option value="mn">
+                                            M'Nông
+                                        </option>
+                                    </select>
+                                </form>
+                                Tên được ưu thích
+                                </h1>
+                            <div style="padding:10px 20px;">
+                                <center>
+                                    <table class="poptable">
+                                        <tbody id="popbody">
+                                            @*<tr><td>1.</td><td><a href="http://www.behindthename.com/name/noah">Noah</a></td><td class="topspacer"></td><td>1.</td><td><a href="http://www.behindthename.com/name/emma">Emma</a></td></tr>
+                                            <tr><td>2.</td><td><a href="http://www.behindthename.com/name/liam">Liam</a></td><td class="topspacer"></td><td>2.</td><td><a href="http://www.behindthename.com/name/olivia">Olivia</a></td></tr>
+                                            <tr><td>3.</td><td><a href="http://www.behindthename.com/name/mason">Mason</a></td><td class="topspacer"></td><td>3.</td><td><a href="http://www.behindthename.com/name/sophia">Sophia</a></td></tr>
+                                            <tr><td>4.</td><td><a href="http://www.behindthename.com/name/jacob">Jacob</a></td><td class="topspacer"></td><td>4.</td><td><a href="http://www.behindthename.com/name/isabella">Isabella</a></td></tr>
+                                            <tr><td>5.</td><td><a href="http://www.behindthename.com/name/william">William</a></td><td class="topspacer"></td><td>5.</td><td><a href="http://www.behindthename.com/name/ava">Ava</a></td></tr>
+                                            <tr><td>6.</td><td><a href="http://www.behindthename.com/name/ethan">Ethan</a></td><td class="topspacer"></td><td>6.</td><td><a href="http://www.behindthename.com/name/mia">Mia</a></td></tr>
+                                            <tr><td>7.</td><td><a href="http://www.behindthename.com/name/michael">Michael</a></td><td class="topspacer"></td><td>7.</td><td><a href="http://www.behindthename.com/name/emily">Emily</a></td></tr>
+                                            <tr><td>8.</td><td><a href="http://www.behindthename.com/name/alexander">Alexander</a></td><td class="topspacer"></td><td>8.</td><td><a href="http://www.behindthename.com/name/abigail">Abigail</a></td></tr>
+                                            <tr><td>9.</td><td><a href="http://www.behindthename.com/name/james">James</a></td><td class="topspacer"></td><td>9.</td><td><a href="http://www.behindthename.com/name/madison">Madison</a></td></tr>
+                                            <tr><td>10.</td><td><a href="http://www.behindthename.com/name/daniel">Daniel</a></td><td class="topspacer"></td><td>10.</td><td><a href="http://www.behindthename.com/name/charlotte">Charlotte</a></td></tr>
+                                            <tr><td colspan="5" align="center"><a href="http://www.behindthename.com/top/lists/united-states/2014">more...</a></td></tr>*@
+                                        </tbody>
+                                    </table>
+
+                                    <script type="text/javascript">
+<!--
+function pop_swap(sel) {
+	var region = $('#popcode').val();
+	$('.poptable').css('height', $('.poptable').height()+'px');
+	$('#popbody').html('<'+'tr><'+'td><'+'/td><'+'/tr>');
+	$.get('/top/ajax_get_top.php?region='+region, function(data) {
+		$('#popbody').html(data);
+		$('.poptable').css('height', '');
+	});
+}
+$(function() {
+	if ($('#popcode').val() != 'us') {
+		pop_swap();
+	}
+});
+//-->
+                                    </script>
+                                </center>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+        <div class="social_home">
+            <a href="http://www.facebook.com/BehindTheNamedotcom" target="_blank"><img src="~/Behind/img/facebook.png"></a>
+            <a href="http://www.twitter.com/onomast" target="_blank"><img src="~/Behind/img/twitter.png"></a>
+            <a href="http://www.pinterest.com/behindthename/" target="_blank"><img src="~/Behind/img/pinterest.png"></a>
+        </div>

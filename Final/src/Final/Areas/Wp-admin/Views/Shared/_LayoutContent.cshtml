@@ -1,15 +1,13 @@
-﻿@model IEnumerable<Final.Models.ApplicationUser>
-@{
-    ViewData["Title"] = "Danh sách người dùng";
+﻿@{
+    Layout = "_Layout.cshtml";
 }
 <section class="content-header">
     <h1>
-        Danh sách người dùng
+        Quản lý người dùng
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Quản trị</a></li>
-        <li>Quản lý người dùng</li>
-        <li class="active">Danh sách người dùng</li>
+        <li class="active">Quản lý người dùng</li>
     </ol>
 </section>
 <section class="content">
@@ -17,14 +15,14 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <a class="btn btn-sm btn-primary pull-left"   asp-action="Create">Tạo</a>
+                    <a class="btn btn-block btn-danger pull-left" style="width:15%" asp-action="Create">Tạo</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Danh sách người dùng</h3>
+                                    <h3 class="box-title">Tài khoản người dùng</h3>
                                     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                     <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
                                 </div><!-- /.box-header -->
@@ -62,7 +60,7 @@
                                         }
                                     </table>
 
-</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,4 +70,4 @@
     </div>
 </section>
 
-                                   
+

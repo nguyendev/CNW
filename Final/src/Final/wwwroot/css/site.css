@@ -48,3 +48,14 @@ textarea {
     display: none
   }
 }
+.navbar-inverse
+{
+    position: absolute !important;
+    width: 100% !important;
+    top: 0px;
+    height: 54px;
+    background-color: #8080ac !important;
+    background-color: rgba(99,99,158,0.85) !important;
+    min-width: 767px;
+    z-index: 9000001;
+}
