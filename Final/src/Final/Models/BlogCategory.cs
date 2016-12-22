@@ -33,6 +33,6 @@ namespace Final.Models
         public int? UserId { get; set; } 
 
         public ApplicationUser BlogAdministrator { get; set; }
-       // public ICollection<BlogPost> BlogPosts { get; set; }
+        public ICollection<BlogPost> BlogPosts { get; set; }
     }
 }
