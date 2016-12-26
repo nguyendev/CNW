@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Final.Data;
 using Final.Models;
 using Final.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace Final
 {
@@ -46,15 +47,15 @@ namespace Final
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<BlogMember, IdentityRole>()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddDefaultTokenProviders();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                 Configuration["Data:Final:ConnectionString"]));
-            services.AddIdentity<ApplicationUser, IdentityRole>(opts =>
+            services.AddIdentity<BlogMember, IdentityRole>(opts =>
             {
-
+                opts.Cookies.ApplicationCookie.LoginPath = "/wp-admin/account/login";
                 //opts.Cookies.ApplicationCookie.LoginPath = "/QuanLyWebsite/Account/Login";
                 //opts.User.RequireUniqueEmail = true;
                 //// opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
@@ -93,7 +94,14 @@ namespace Final
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "MyCookies",
+                SlidingExpiration = true,
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                LoginPath = new PathString("/Account/Login")
+            });
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();

@@ -27,8 +27,8 @@ namespace Final.Areas.Admin.ViewModels
     public class RoleEditModel
     {
         public IdentityRole Role { get; set; }
-        public IEnumerable<ApplicationUser> Members { get; set; }
-        public IEnumerable<ApplicationUser> NonMembers { get; set; }
+        public IEnumerable<BlogMember> Members { get; set; }
+        public IEnumerable<BlogMember> NonMembers { get; set; }
     }
     public class RoleModificationModel
     {

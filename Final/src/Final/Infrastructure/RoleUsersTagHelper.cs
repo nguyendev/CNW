@@ -10,9 +10,9 @@ namespace Final.Infrastructure
     [HtmlTargetElement("td", Attributes = "identity-role")]
     public class RoleUsersTagHelper : TagHelper
     {
-        private UserManager<ApplicationUser> _userManager;
+        private UserManager<BlogMember> _userManager;
         private RoleManager<IdentityRole> _roleManager;
-        public RoleUsersTagHelper(UserManager<ApplicationUser> usermgr,
+        public RoleUsersTagHelper(UserManager<BlogMember> usermgr,
         RoleManager<IdentityRole> rolemgr)
         {
             _userManager = usermgr;

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Final.Infrastructure
 {
-    public class CustomPasswordValidator : PasswordValidator<ApplicationUser>
+    public class CustomPasswordValidator : PasswordValidator<BlogMember>
     {
         public override async Task<IdentityResult> ValidateAsync(
-            UserManager<ApplicationUser> manager, ApplicationUser user, string password)
+            UserManager<BlogMember> manager, BlogMember user, string password)
         {
             IdentityResult result = await base.ValidateAsync(manager,
             user, password);

@@ -10,26 +10,38 @@ namespace Final.Models
     [Table("BlogPost")]
     public class BlogPost
     {
-        [Display(Name = "URL")]
+        [Display(Name = "ID")]
+        public string ID { get; set; }
+
+        [Display(Name ="URL")]
         public string URL { get; set; }
 
-        [Display(Name = "Nhận xét")]
-        [Required]
-        public string Comment { get; set; }
-
-        [Display(Name = "")]
+        [Display(Name = "Nội dung")]
         [Required]
         public string Content { get; set; }
 
-        [Display(Name = "Date Created")]
-        public DateTime Created { get; set; }
+        [Display(Name = "Ghi chú")]
+        public string Notes { get; set; }
 
-        [Display(Name = "Date Published")]
-        public DateTime? Published { get; set; }
+        [Display(Name = "Ngày tạo")]
+        public Nullable<System.DateTime> Create_DT { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        public string Auth_status { get; set; }
+
+        [Display(Name = "Người duyệt")]
+        public string Checker_ID { get; set; }
+        [Display(Name = "Ngày xuất bản")]
+        public Nullable<System.DateTime> Publish_DT { get; set; }
 
         public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]
-        public virtual ApplicationUser Author { get; set; }
+        public virtual BlogMember Author { get; set; }
+
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public virtual BlogCategory Category { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace Final.Models
         [Display(Name = "Mã người dùng")]
         public int? UserId { get; set; } 
 
-        public ApplicationUser BlogAdministrator { get; set; }
+        public BlogMember BlogAdministrator { get; set; }
         public ICollection<BlogPost> BlogPosts { get; set; }
     }
 }

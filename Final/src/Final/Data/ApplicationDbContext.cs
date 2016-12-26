@@ -11,16 +11,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Final.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<BlogMember>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
         public static async Task CreateExampleAccount(IServiceProvider serviceProvider,
             IConfiguration configuration)
         {
-            UserManager<ApplicationUser> userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            UserManager<BlogMember> userManager = serviceProvider.GetRequiredService<UserManager<BlogMember>>();
             RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             string usernameadmin = configuration["Data:AdminUser:Name"];
             string emailadmin = configuration["Data:AdminUser:Email"];
@@ -40,7 +41,7 @@ namespace Final.Data
                 {
                     await roleManager.CreateAsync(new IdentityRole(roleadmin));
                 }
-                ApplicationUser useradmin = new ApplicationUser
+                BlogMember useradmin = new BlogMember
                 {
                     UserName = usernameadmin,
                     Email = emailadmin
@@ -60,7 +61,7 @@ namespace Final.Data
                 {
                     await roleManager.CreateAsync(new IdentityRole(roleguest));
                 }
-                ApplicationUser userguest = new ApplicationUser
+                BlogMember userguest = new BlogMember
                 {
                     UserName = usernameguest,
                     Email = emailguest
@@ -80,5 +81,7 @@ namespace Final.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<BlogPost> Post { get; set; }
+        public DbSet<BlogCategory> Category { get; set; }
     }
 }

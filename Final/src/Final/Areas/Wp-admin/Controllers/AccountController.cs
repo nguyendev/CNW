@@ -14,10 +14,10 @@ namespace Final.Areas.Admin.Controllers
     [Area("wp-admin")]
     public class AccountController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userMgr,
-        SignInManager<ApplicationUser> signinMgr)
+        private UserManager<BlogMember> _userManager;
+        private SignInManager<BlogMember> _signInManager;
+        public AccountController(UserManager<BlogMember> userMgr,
+        SignInManager<BlogMember> signinMgr)
         {
             _userManager = userMgr;
             _signInManager = signinMgr;
@@ -40,7 +40,7 @@ namespace Final.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await _userManager.FindByEmailAsync(details.Email);
+                BlogMember user = await _userManager.FindByEmailAsync(details.Email);
                 if (user != null)
                 {
                     await _signInManager.SignOutAsync();
@@ -98,7 +98,7 @@ namespace Final.Areas.Admin.Controllers
             }
             else
             {
-                ApplicationUser user = new ApplicationUser
+                BlogMember user = new BlogMember
                 {
                     Email = info.Principal.FindFirst(ClaimTypes.Email).Value,
                     UserName =

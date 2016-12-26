@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Final.Infrastructure
 {
-    public class CustomUserValidator : UserValidator<ApplicationUser>
+    public class CustomUserValidator : UserValidator<BlogMember>
     {
         public override async Task<IdentityResult> ValidateAsync(
-        UserManager<ApplicationUser> manager,
-        ApplicationUser user)
+        UserManager<BlogMember> manager,
+        BlogMember user)
         {
             IdentityResult result = await base.ValidateAsync(manager, user);
             List<IdentityError> errors = result.Succeeded ?

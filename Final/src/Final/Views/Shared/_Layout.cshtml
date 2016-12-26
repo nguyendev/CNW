@@ -8,79 +8,218 @@
     <meta name="description" content="The meaning and history of first names, also called given names, as well as popularity statistics and famous bearers.">
     <meta name="keywords" content="meaning, baby names, list, dictionary, encyclopedia, etymology, name, etymologies, origin, meanings, origins, onomastics, boy names, girl names, reference">
     <meta name="viewport" id="viewport" content="">
-    <link href="~/Behind/css/style.css" rel="stylesheet" />
-    <link href="~/Behind/css/jquery-ui.css" rel="stylesheet" />
-    <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.behindthename.com/favicon.ico">
-    @*<meta property="fb:page_id" content="171755776192813">*@
+    <link rel="stylesheet" type="text/css" href="~/Green/css/isotope.css" media="screen" />
+    <link rel="stylesheet" href="~/Green/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Green/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Green/css/bootstrap-theme.css">
+    <link href="~/Green/css/responsive-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Green/css/animate.css">
+    <link rel="stylesheet" href="~/Green/css/style.css">
+    <link rel="stylesheet" href="~/Green/css/font-awesome.min.css">
+    <!-- skin -->
+    <link rel="stylesheet" href="~/Green/skin/default.css">
+    <link rel="icon" type="image/x-icon" href="http://nguyenit.net/wp-content/uploads/2016/07/cropped-favicon.ico-192x192.png">
+    <link rel="stylesheet" href="~/Green/css/user.css">
+    @*<link rel="stylesheet" type="text/css" href="~/Green/css/bootstrap-touch-slider.css">*@
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">*@
+    @*@*<meta property="fb:page_id" content="171755776192813">
     <environment names="Development">
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        
+
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    </environment>
+    </environment>*@
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+    <style>
+        html > /**/ body .carousel-inner > img,
+        .carousel-inner > .item > a > img {
+            /*width: 100%;*/
+        }
+    </style>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Final</a>
+
+    <div class="header">
+        <section id="header" class="appear">
+
+            <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="fa fa-bars color-white"></span>
+                    </button>
+                    <h1>
+                        <a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">
+                            GREEN
+                        </a>
+                    </h1>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
+                        <li class="active"><a href="#index">Home</a></li>
+                        <li><a href="#section-about">About</a></li>
+                        <li><a href="#services">Service</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#line-pricing">Pricing</a></li>
+                        <li><a href="#section-works">Portfolio</a></li>
+                        <li><a href="#section-contact">Contact</a></li>
+                    </ul>
+                </div><!--/.navbar-collapse -->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </div>
+
+
+        </section>
     </div>
-    <hr />
-    <div class="container body-content">
-        <div class="body-wrapper container">
-            <div class="body">
-                @RenderBody()
+
+
+    <div class="slider">
+        <div id="about-slider">
+            <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators visible-xs">
+                    <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-slider" data-slide-to="1"></li>
+                    
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="~/Green/img/1.png" class="img-responsive" alt="">
+                        <div class="carousel-caption">
+                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+                                <h2><span>Clean & Modern Design Template</span></h2>
+                            </div>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+                                </div>
+                            </div>
+                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg" required="required">Live Demo</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="getnow" name="Get Now" class="btn btn-primary btn-lg" required="required">Get Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Green/img/4.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption">
+                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.0s">
+                                <h2>Fully Responsive</h2>
+                            </div>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+                                </div>
+                            </div>
+                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.6s">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <button type="livedemo" name="purchase" class="btn btn-primary btn-lg" required="required">Live Demo</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="getnow" name="subscribe" class="btn btn-primary btn-lg" required="required">Get Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+
+                <a class=" right carousel-control hidden-xs"href="#carousel-slider" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div> <!--/#carousel-slider-->
+        </div><!--/#about-slider-->
+    </div><!--/#slider-->
+
+        @RenderBody()
+    <section id="footer" class="section footer">
+            <div class="container">
+                <div class="row animated opacity mar-bot0" data-andown="fadeIn" data-animation="animation">
+                    <div class="col-sm-12 align-center">
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row align-center copyright">
+                    <div class="col-sm-12">
+                        <p>&copy; GREEN Theme</p>
+                        <div class="credits">
+                            <!--
+                                All the links in the footer should remain intact.
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Green
+                            -->
+                            <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-      
-                <hr />
-                <footer>
-                    <p>&copy; 2016 - Final</p>
-                </footer>
-            </div>
+        </section>
+    <script src="~/Green/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="~/Green/js/jquery.js"></script>
+    <script src="~/Green/js/jquery.easing.1.3.js"></script>
+    <script src="~/Green/js/bootstrap.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="~/Green/js/jquery.isotope.min.js"></script>
+    <script src="~/Green/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Green/js/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="~/Green/js/skrollr.min.js"></script>
+    <script src="~/Green/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="~/Green/js/jquery.localscroll-1.2.7-min.js"></script>
+    <script src="~/Green/js/stellar.js"></script>
+    <script src="~/Green/js/responsive-slider.js"></script>
+    <script src="~/Green/js/jquery.appear.js"></script>
+    <script src="~/Green/js/grid.js"></script>
+    <script src="~/Green/js/main.js"></script>
+    <script src="~/Green/js/wow.min.js"></script>
+    <script>wow = new WOW({}).init();</script>
+    <script src="~/Green/contactform/contactform.js"></script>
 
-            <environment names="Development">
-                <script src="~/lib/jquery/dist/jquery.js"></script>
-                <script src="~/Behind/jquery-ui.min.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                <script src="~/js/site.js" asp-append-version="true"></script>
-            </environment>
-            <environment names="Staging,Production">
-                <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                        asp-fallback-test="window.jQuery">
-                </script>
-               
-                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-                </script>
-                <script src="~/js/site.min.js" asp-append-version="true"></script>
-            </environment>
+@*<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/Behind/jquery-ui.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
 
-            @RenderSection("scripts", required: false)
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>*@
+    @*<script src="~/Green/js/bootstrap-touch-slider.js"></script>*@
+@RenderSection("scripts", required: false)
 </body>
 </html>
