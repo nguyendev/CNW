@@ -36,12 +36,15 @@ namespace Final.Models
 
         public string AuthorId { get; set; }
 
+
         [ForeignKey("AuthorId")]
         public virtual BlogMember Author { get; set; }
 
+        [Display(Name = "Danh mục")]
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
         public virtual BlogCategory Category { get; set; }
+
     }
 }

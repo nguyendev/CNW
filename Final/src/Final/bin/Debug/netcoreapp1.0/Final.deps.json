@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "d0ae57c37f1e50c04e1b8f64ea37d8fe81d693ae"
+    "signature": "d3bc60af7d6468a58ca1ddc9d86e1b6f50e55ee7"
   },
   "compilationOptions": {
     "defines": [
@@ -36,7 +36,8 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-          "Microsoft.AspNetCore.Authentication.Google": "1.1.0-preview2-22535"
+          "Microsoft.AspNetCore.Authentication.Google": "1.1.0-preview2-22535",
+          "PaulMiami.AspNetCore.Mvc.Recaptcha": "1.1.0"
         },
         "runtime": {
           "Final.dll": {}
@@ -1946,6 +1947,23 @@
         },
         "compile": {
           "lib/netstandard1.0/NuGet.Versioning.dll": {}
+        }
+      },
+      "PaulMiami.AspNetCore.Mvc.Recaptcha/1.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Localization": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
+          "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
+          "NETStandard.Library": "1.6.1-preview1-24530-04",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.6/PaulMiami.AspNetCore.Mvc.Recaptcha.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/PaulMiami.AspNetCore.Mvc.Recaptcha.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -4565,6 +4583,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Stok+SI5lWxOkTgZZM7jT4xuAZogm5+j85mKJeHSXb8o0OAbB+qDX9jkdM2wIEnjoR8R29J0nQYwk2Kl2lWFpA=="
+    },
+    "PaulMiami.AspNetCore.Mvc.Recaptcha/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PPbhSwdMBlRbhRXM8dX64dXFEYDZZ3lzea8xF5WuKnF8CD95HcFB9MbT6pbtdjUD9sba14z/JkG39p2rc+92VQ=="
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

@@ -13,6 +13,8 @@ using Final.Data;
 using Final.Models;
 using Final.Services;
 using Microsoft.AspNetCore.Http;
+using Final.Infrastructure;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace Final
 {
@@ -72,6 +74,13 @@ namespace Final
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.RegisterServices();
+            services.AddRecaptcha(new RecaptchaOptions
+            {
+                SiteKey = Configuration["6Lfd2A8UAAAAAEBsxMi4memnS3SB3IZnXnZddGMb"],
+                SecretKey = Configuration["6Lfd2A8UAAAAAMFtAvL2niwNrmFnWQktq07tSZ-t"],
+                ValidationMessage = "Are you a robot?"
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -125,6 +134,7 @@ namespace Final
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             ApplicationDbContext.CreateExampleAccount(app.ApplicationServices, Configuration).Wait();
+            ApplicationDbContext.CreateExampleCategory(app.ApplicationServices);
         }
     }
 }

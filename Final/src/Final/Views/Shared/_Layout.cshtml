@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="~/Green/skin/default.css">
     <link rel="icon" type="image/x-icon" href="http://nguyenit.net/wp-content/uploads/2016/07/cropped-favicon.ico-192x192.png">
     <link rel="stylesheet" href="~/Green/css/user.css">
+    <link href="~/AdminLTE/dist/css/AdminLTE.css" rel="stylesheet" />
+ 
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
     @*<link rel="stylesheet" type="text/css" href="~/Green/css/bootstrap-touch-slider.css">*@
     @*<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">*@
     @*@*<meta property="fb:page_id" content="171755776192813">
@@ -36,7 +40,7 @@
     </environment>*@
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
     <style>
-        html > /**/ body .carousel-inner > img,
+        .carousel-inner > img,
         .carousel-inner > .item > a > img {
             /*width: 100%;*/
         }
@@ -62,13 +66,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-                        <li class="active"><a href="#index">Home</a></li>
-                        <li><a href="#section-about">About</a></li>
-                        <li><a href="#services">Service</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#line-pricing">Pricing</a></li>
-                        <li><a href="#section-works">Portfolio</a></li>
-                        <li><a href="#section-contact">Contact</a></li>
+                        <li class="active"><a href="#index">Trang chủ</a></li>
+                        <li><a href="#section-about">Blog</a></li>
+                        <li><a href="#services">Danh sách</a></li>
+                        <li><a href="#section-contact">Liên hệ</a></li>
+                        <li><a href="#">Đăng nhập</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
             </div>
@@ -150,6 +152,7 @@
     </div><!--/#slider-->
 
         @RenderBody()
+  
     <section id="footer" class="section footer">
             <div class="container">
                 <div class="row animated opacity mar-bot0" data-andown="fadeIn" data-animation="animation">

@@ -74,6 +74,45 @@ namespace Final.Data
                 }
             }
         }
+        public static void CreateExampleCategory(IServiceProvider serviceProvider)
+        {
+            using (var context = new ApplicationDbContext(
+                serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
+            {
+
+
+                if (context.Category.Any())
+                {
+                    return;   // DB has been seeded
+                }
+                context.Category.AddRange(
+                 new BlogCategory
+                 {
+                     CategoryName = "Đăng nhập facebook",
+                     OrderNo = 1,
+                     Status = "U",
+                     UserId = 1
+                 },
+                 new BlogCategory
+                 {
+                     CategoryName = "Nạp tiền điện thoại",
+                     OrderNo = 1,
+                     Status = "U",
+                     UserId = 1
+                 },
+                 new BlogCategory
+                 {
+                     CategoryName = "Nạp thẻ game",
+                     OrderNo = 1,
+                     Status = "U",
+                     UserId = 1
+                 }
+                );
+
+                context.SaveChanges();
+            }
+
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

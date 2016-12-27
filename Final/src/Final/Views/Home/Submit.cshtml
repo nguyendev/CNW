@@ -1,0 +1,114 @@
+﻿
+@model Final.Models.BlogPost
+@{
+    ViewData["Title"] = "RP - Báo cáo lừa đảo trực tuyến";
+    Layout = null;
+}
+@using PaulMiami.AspNetCore.Mvc.Recaptcha
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewData["Title"] - Final</title>
+
+    <link href="~/AdminLTE/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/AdminLTE.min.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content" style="background-color: #ecf0f5;">
+            <br />
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <form asp-action="Submit">
+                        <div class="form-horizontal">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Báo cáo trang lừa đảo trực tuyến</h2>
+                                </div><!-- /.box-header -->
+                                <div class="panel-body">
+                                    <p>Hãy nhập trang web mà bạn cảm thấy là lừa gạt trực tuyến vào đây, việc làm của bạn sẽ giúp ích cho rất nhiều người. Chúng tôi sẽ có những hành động cần thiết để xử lý những website này</p>
+                                    <div class="form-group">
+                                        <label asp-for="URL" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="URL" class="form-control" />
+                                            <span asp-validation-for="URL" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="g-recaptcha" data-sitekey="6Lfd2A8UAAAAAEBsxMi4memnS3SB3IZnXnZddGMb" data-callback='doSomething'></div>
+                                            <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label asp-for="Content" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <textarea asp-for="Content">Easy (and free!) You should check out our premium features.</textarea>
+                                            <span asp-validation-for="Content" class="text-danger" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-footer">
+                                    <div class="form-group">
+                                        <div class="col-md-10"></div>
+                                        <div class="pull-right col-md-2">
+                                            <input style="display: none" id="togglee" type="submit" value="Gửi" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <script src="~/lib/jquery/dist/jquery.js"></script>
+                        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                        <script type="text/javascript" language="javascript">
+                            function doSomething() {
+                                var isCaptchaValidated = false;
+                                var response = grecaptcha.getResponse();
+                                if (response.length == 0) {
+                                    isCaptchaValidated = false;
+                                    alert('vui lòng xác thực bạn không là robot');
+                                } else {
+                                    isCaptchaValidated = true;
+                                }
+
+
+                                if (isCaptchaValidated) {
+                                    document.getElementById('togglee').style.display = 'block';
+                                    //you can now submit your form
+                                }
+                            }
+
+                        </script>
+                    }
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
