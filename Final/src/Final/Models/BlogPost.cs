@@ -34,10 +34,9 @@ namespace Final.Models
         [Display(Name = "Ngày xuất bản")]
         public Nullable<System.DateTime> Publish_DT { get; set; }
 
+        public int Record_Status { get; set; }
         public string AuthorId { get; set; }
 
-
-        [ForeignKey("AuthorId")]
         public virtual BlogMember Author { get; set; }
 
         [Display(Name = "Danh mục")]

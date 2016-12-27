@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Final.Migrations
 {
-    public partial class Init : Migration
+    public partial class Init2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,18 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SYS_AUTH_STATUS",
+                columns: table => new
+                {
+                    AUTH_STATUS = table.Column<string>(maxLength: 1, nullable: false),
+                    AUTH_STATUS_NAME = table.Column<string>(maxLength: 20, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SYS_AUTH_STATUS", x => x.AUTH_STATUS);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -60,6 +72,34 @@ namespace Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlogCategory",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Auth_status = table.Column<string>(maxLength: 32, nullable: true),
+                    AuthorId = table.Column<string>(nullable: true),
+                    CategoryDes = table.Column<string>(maxLength: 256, nullable: false),
+                    CategoryName = table.Column<string>(maxLength: 256, nullable: false),
+                    Checker_ID = table.Column<string>(nullable: true),
+                    Create_DT = table.Column<DateTime>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
+                    OrderNo = table.Column<int>(nullable: false),
+                    Publish_DT = table.Column<DateTime>(nullable: true),
+                    Record_Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogCategory", x => x.CategoryId);
+                    table.ForeignKey(
+                        name: "FK_BlogCategory_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,6 +188,44 @@ namespace Final.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BlogPost",
+                columns: table => new
+                {
+                    ID = table.Column<string>(nullable: false),
+                    Auth_status = table.Column<string>(nullable: true),
+                    AuthorId = table.Column<string>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
+                    Checker_ID = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: false),
+                    Create_DT = table.Column<DateTime>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
+                    Publish_DT = table.Column<DateTime>(nullable: true),
+                    Record_Status = table.Column<int>(nullable: false),
+                    URL = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogPost", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_BlogPost_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BlogPost_BlogCategory_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "BlogCategory",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogCategory_AuthorId",
+                table: "BlogCategory",
+                column: "AuthorId");
+
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
@@ -158,6 +236,16 @@ namespace Final.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogPost_AuthorId",
+                table: "BlogPost",
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogPost_CategoryId",
+                table: "BlogPost",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -193,6 +281,12 @@ namespace Final.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "BlogPost");
+
+            migrationBuilder.DropTable(
+                name: "SYS_AUTH_STATUS");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -206,6 +300,9 @@ namespace Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BlogCategory");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

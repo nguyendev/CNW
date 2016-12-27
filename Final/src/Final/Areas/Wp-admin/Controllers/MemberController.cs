@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Final.Areas.Admin.Controllers
 {
     [Area("wp-admin")]
-    //[Authorize(Roles = "Admins")]
+    [Authorize]
     public class MemberController : Controller
     {
         // GET: /<controller>/

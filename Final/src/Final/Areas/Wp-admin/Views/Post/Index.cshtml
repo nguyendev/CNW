@@ -1,18 +1,18 @@
 @model IEnumerable<Final.Models.BlogPost>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index Post";
     Layout = "~/Areas/Wp-admin/Views/Shared/_Layout.cshtml";
 }
 
 <section class="content-header">
     <h1>
-        T?o ng??i dùng
+        Index
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Qu?n tr?</a></li>
-        <li class="active">Qu?n lý ng??i dùng</li>
-        <li class="activi">T?o ng??i dùng</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Manager</a></li>
+        <li class="active">Post Manager</li>
+        <li class="activi">Create</li>
     </ol>
 </section>
 <section class="content">
@@ -27,19 +27,17 @@
                         <div class="col-xs-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">T?o ng??i dùng</h3>
-                                    <div asp-validation-summary="All" class="text-danger"></div>
-                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                    <h3 class="box-title">Unapproved</h3>
+                                    <span class="label label-primary pull-right"><i class="fa fa-info"></i></span>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
-                                    <table class="table">
-                                        <thead>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <table class="table table-bordered table-hove table-responsive text-center">
+                                        
                                             <tr>
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.Auth_status)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Checker_ID)
+                                                    @Html.DisplayNameFor(model => model.URL)
                                                 </th>
                                                 <th>
                                                     @Html.DisplayNameFor(model => model.Content)
@@ -50,51 +48,101 @@
                                                 <th>
                                                     @Html.DisplayNameFor(model => model.Notes)
                                                 </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Publish_DT)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.URL)
-                                                </th>
+                                                
                                                 <th></th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                        
                                             @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Auth_status)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Checker_ID)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Content)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Create_DT)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Notes)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Publish_DT)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.URL)
-                                                    </td>
-                                                    <td>
-                                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
+                                            {   @if (item.Auth_status == "U")
+                                                {
+                                                         <tr>
+                                                             <td>
+                                                                 @Html.DisplayFor(modelItem => item.URL)
+                                                             </td>
+                                                             <td>
+                                                                 @Html.DisplayFor(modelItem => item.Content)
+                                                             </td>
+                                                             <td>
+                                                                 @Html.DisplayFor(modelItem => item.Create_DT)
+                                                             </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Notes)
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                                                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                                                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                }
+                                            }   
                                     </table>
                                 </div>
                             </div>
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Approved</h3>
+                                    <span class="label label-success pull-right"><i class="fa fa-comment"></i></span>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <table class="table table-bordered table-hove table-responsive">
+
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.URL)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Content)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Checker_ID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Notes)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Publish_DT)
+                                            </th>
+
+                                            <th></th>
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            @if (item.Auth_status != "U")
+                                            {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.URL)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Content)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Checker_ID)
+                                                </td>                                              
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Notes)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Publish_DT)
+                                                </td>
+                                                
+                                                <td>
+                                                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -135,6 +135,7 @@ namespace Final
             });
             ApplicationDbContext.CreateExampleAccount(app.ApplicationServices, Configuration).Wait();
             ApplicationDbContext.CreateExampleCategory(app.ApplicationServices);
+            ApplicationDbContext.CreateExampleAuth(app.ApplicationServices);
         }
     }
 }

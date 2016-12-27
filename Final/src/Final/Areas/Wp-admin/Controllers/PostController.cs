@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Final.Data;
 using Final.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Final.Areas.Wp_admin.Controllers
 {
     [Area("wp-admin")]
+    [Authorize]
     public class PostController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,7 +26,7 @@ namespace Final.Areas.Wp_admin.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Post.Include(b => b.Author).Include(b => b.Category);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await applicationDbContext.Where(b => b.Record_Status == 1).ToListAsync());
         }
 
         // GET: Post/Details/5
@@ -40,19 +42,16 @@ namespace Final.Areas.Wp_admin.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["Auth_status"] = new SelectList(_context.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", blogPost.Auth_status);
+            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", blogPost.AuthorId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", blogPost.CategoryId);
             return View(blogPost);
         }
 
         // GET: Post/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
-            ViewData["Create_DT"] = DateTime.Now;
-            ViewData["Auth_status"] = "U";
-            ViewData["Checker_ID"] = null;
-            ViewData["Publish_DT"] = null;
             return View();
         }
 
@@ -66,12 +65,13 @@ namespace Final.Areas.Wp_admin.Controllers
             blogPost.ID = blogPost.URL;
             if (ModelState.IsValid)
             {
+                blogPost.Auth_status = "U";
+                blogPost.Create_DT = DateTime.Now;
+                blogPost.Record_Status = 1;
                 _context.Add(blogPost);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", blogPost.AuthorId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", blogPost.CategoryId);
             return View(blogPost);
         }
 
@@ -88,6 +88,7 @@ namespace Final.Areas.Wp_admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["Auth_status"] = new SelectList(_context.SYS_AUTH_STATUS, "AUTH_STATUS", "AUTH_STATUS_NAME", blogPost.Auth_status);
             ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", blogPost.AuthorId);
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", blogPost.CategoryId);
             return View(blogPost);
@@ -109,6 +110,7 @@ namespace Final.Areas.Wp_admin.Controllers
             {
                 try
                 {
+                    blogPost.Publish_DT = DateTime.Now;
                     _context.Update(blogPost);
                     await _context.SaveChangesAsync();
                 }
@@ -125,8 +127,6 @@ namespace Final.Areas.Wp_admin.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", blogPost.AuthorId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", blogPost.CategoryId);
             return View(blogPost);
         }
 
@@ -153,8 +153,15 @@ namespace Final.Areas.Wp_admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var blogPost = await _context.Post.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Post.Remove(blogPost);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (blogPost.Auth_status.Equals("U"))
+                    _context.Post.Remove(blogPost);
+                else
+                    blogPost.Record_Status = 0;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception) { }
             return RedirectToAction("Index");
         }
 

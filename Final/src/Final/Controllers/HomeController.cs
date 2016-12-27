@@ -9,6 +9,8 @@ using Final.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Final.Models;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Final.Controllers
 {
@@ -26,12 +28,8 @@ namespace Final.Controllers
 
         public IActionResult Submit()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
+            //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
-            ViewData["Create_DT"] = DateTime.Now;
-            ViewData["Auth_status"] = "U";
-            ViewData["Checker_ID"] = null;
-            ViewData["Publish_DT"] = null;
             return View();
         }
         public IActionResult Test()
@@ -48,12 +46,12 @@ namespace Final.Controllers
             blogPost.ID = blogPost.URL;
             if (ModelState.IsValid)
             {
+                blogPost.Auth_status = "U";
+                blogPost.Create_DT = DateTime.Now;
                 _context.Add(blogPost);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", blogPost.AuthorId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", blogPost.CategoryId);
             return View(blogPost);
         }
         //public async Task<string> UploadImage()

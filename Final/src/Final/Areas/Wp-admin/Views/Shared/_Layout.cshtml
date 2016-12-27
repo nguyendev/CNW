@@ -6,7 +6,7 @@
     @inject UserManager<BlogMember> UserManager
     @if (SignInManager.IsSignedIn(User))
     {
-        <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        @*<form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
@@ -15,13 +15,14 @@
                         <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
                     </li>
                 </ul>
-            </form>
+            </form>*@
     }
     else {
 
     }
-    }
-<html>
+}
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>@ViewData["Title"] - Final</title>
@@ -369,7 +370,7 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="index.html"><i class="fa fa-"></i> Tổng quan</a></li>
+                                <li class=""><a href="/wp-admin/home/index"><i class="fa fa-"></i> Tổng quan</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -381,8 +382,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/layout/top-nav.html">Tất cả bài viết</a></li>
-                                <li><a href="pages/layout/boxed.html">Viết bài mới</a></li>
+                                <li><a href="/wp-admin/post/index">Tất cả bài viết</a></li>
+                                <li><a href="/wp-admin/post/create">Viết bài mới</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -394,8 +395,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/layout/top-nav.html">Tất cả chuyên mục</a></li>
-                                <li><a href="pages/layout/boxed.html">Chuyên mục mới</a></li>
+                                <li><a href="/wp-admin/category/index">Tất cả chuyên mục</a></li>
+                                <li><a href="/wp-admin/category/create">Chuyên mục mới</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -658,8 +659,8 @@
         <!-- jQuery Knob Chart -->
         <script src="~/AdminLTE/plugins/knob/jquery.knob.js"></script>
         <!-- daterangepicker -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-        <script src="~/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+        <script src="~/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>*@
         <!-- datepicker -->
         <script src="~/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- Bootstrap WYSIHTML5 -->
@@ -671,7 +672,7 @@
         <!-- AdminLTE App -->
         <script src="~/AdminLTE/dist/js/app.min.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="~/AdminLTE/dist/js/pages/dashboard.js"></script>
+        @*<script src="~/AdminLTE/dist/js/pages/dashboard.js"></script>*@
         <!-- AdminLTE for demo purposes -->
         <script src="~/AdminLTE/dist/js/demo.js"></script>
 @RenderSection("scripts", required: false)

@@ -16,6 +16,43 @@ namespace Final.Migrations
                 .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Final.Models.BlogCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Auth_status")
+                        .HasAnnotation("MaxLength", 32);
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("CategoryDes")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("Checker_ID");
+
+                    b.Property<DateTime?>("Create_DT");
+
+                    b.Property<string>("Notes");
+
+                    b.Property<int>("OrderNo");
+
+                    b.Property<DateTime?>("Publish_DT");
+
+                    b.Property<int>("Record_Status");
+
+                    b.HasKey("CategoryId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("BlogCategory");
+                });
+
             modelBuilder.Entity("Final.Models.BlogMember", b =>
                 {
                     b.Property<string>("Id");
@@ -65,31 +102,6 @@ namespace Final.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Final.Models.BlogCategory", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BlogAdministratorId");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<int>("OrderNo");
-
-                    b.Property<string>("Status")
-                        .HasAnnotation("MaxLength", 32);
-
-                    b.Property<int?>("UserId");
-
-                    b.HasKey("CategoryId");
-
-                    b.HasIndex("BlogAdministratorId");
-
-                    b.ToTable("BlogCategory");
-                });
-
             modelBuilder.Entity("Final.Models.BlogPost", b =>
                 {
                     b.Property<string>("ID");
@@ -111,6 +123,8 @@ namespace Final.Migrations
 
                     b.Property<DateTime?>("Publish_DT");
 
+                    b.Property<int>("Record_Status");
+
                     b.Property<string>("URL");
 
                     b.HasKey("ID");
@@ -120,6 +134,19 @@ namespace Final.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("BlogPost");
+                });
+
+            modelBuilder.Entity("Final.Models.SYS_AUTH_STATUS", b =>
+                {
+                    b.Property<string>("AUTH_STATUS")
+                        .HasAnnotation("MaxLength", 1);
+
+                    b.Property<string>("AUTH_STATUS_NAME")
+                        .HasAnnotation("MaxLength", 20);
+
+                    b.HasKey("AUTH_STATUS");
+
+                    b.ToTable("SYS_AUTH_STATUS");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -231,9 +258,9 @@ namespace Final.Migrations
 
             modelBuilder.Entity("Final.Models.BlogCategory", b =>
                 {
-                    b.HasOne("Final.Models.BlogMember", "BlogAdministrator")
+                    b.HasOne("Final.Models.BlogMember", "Author")
                         .WithMany()
-                        .HasForeignKey("BlogAdministratorId");
+                        .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("Final.Models.BlogPost", b =>

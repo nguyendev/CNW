@@ -49,7 +49,7 @@ namespace Final.Areas.Admin.Controllers
                     user, details.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return Redirect(returnUrl ?? "/");
+                        return Redirect("/wp-admin/home/index");
                     }
                 }
                 ModelState.AddModelError(nameof(LoginModel.Email),

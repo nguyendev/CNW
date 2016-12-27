@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Final.Data;
 using Final.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Final.Areas.Wp_admin.Controllers
 {
     [Area("wp-admin")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +24,7 @@ namespace Final.Areas.Wp_admin.Controllers
         // GET: Category
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            return View(await _context.Category.Where(b => b.Record_Status == 1).ToListAsync());
         }
 
         // GET: Category/Details/5
@@ -57,6 +59,9 @@ namespace Final.Areas.Wp_admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                blogCategory.Auth_status = "A";
+                blogCategory.Create_DT = DateTime.Now;
+                blogCategory.Record_Status = 1;
                 _context.Add(blogCategory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -96,6 +101,7 @@ namespace Final.Areas.Wp_admin.Controllers
             {
                 try
                 {
+                    blogCategory.Publish_DT = DateTime.Now;
                     _context.Update(blogCategory);
                     await _context.SaveChangesAsync();
                 }
@@ -138,8 +144,16 @@ namespace Final.Areas.Wp_admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var blogCategory = await _context.Category.SingleOrDefaultAsync(m => m.CategoryId == id);
-            _context.Category.Remove(blogCategory);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (blogCategory.Auth_status.Equals("U"))
+                    _context.Category.Remove(blogCategory);
+                else
+                    blogCategory.Record_Status = 0;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception) { }
+            
             return RedirectToAction("Index");
         }
 

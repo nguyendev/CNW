@@ -28,7 +28,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title">T?o ng??i dùng</h3>
                                     <div asp-validation-summary="All" class="text-danger"></div>
-                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                    <span class="label label-success pull-right"><i class="fa fa-info"></i></span>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <dl class="dl-horizontal">
@@ -78,6 +78,7 @@
 
                                     <form asp-action="Delete">
                                         <div class="form-actions no-color">
+                                            <input type="hidden" asp-for="ID" />
                                             <input type="submit" value="Delete" class="btn btn-default" /> |
                                             <a asp-action="Index">Back to List</a>
                                         </div>

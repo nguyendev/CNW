@@ -1,38 +1,1 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Final.Models
-{
-    [Table("BlogCategory")]
-    public class BlogCategory
-    {
-        [Key]
-        [Display(Name = "Mã chủ đề")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryId { get; set; }
-        
-        [Display(Name = "Tên chủ đề")]
-        [Required(ErrorMessage = "Hãy nhập tên chủ đề")]
-        [StringLength(256)]
-        public string CategoryName { get; set; }
-
-        [Display(Name = "Thứ tự xuất hiện")]
-        [Required(ErrorMessage = "Hãy nhập thứ tự")]
-
-        public int OrderNo { get; set; }
-
-        [Display(Name = "Trạng thái")]
-        [StringLength(32)]
-        public string Status { get; set; }
-
-        [Display(Name = "Mã người dùng")]
-        public int? UserId { get; set; } 
-
-        public BlogMember BlogAdministrator { get; set; }
-        public ICollection<BlogPost> BlogPosts { get; set; }
-    }
-}
+﻿using System; using System.Collections.Generic; using System.ComponentModel.DataAnnotations; using System.ComponentModel.DataAnnotations.Schema; using System.Linq; using System.Threading.Tasks;  namespace Final.Models {     [Table("BlogCategory")]     public class BlogCategory     {         [Key]         [Display(Name = "Mã chủ đề")]         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]         public int CategoryId { get; set; }                  [Display(Name = "Tên chủ đề")]         [Required(ErrorMessage = "Hãy nhập tên chủ đề")]         [StringLength(256)]         public string CategoryName { get; set; }          [Display(Name = "Mô tả chủ đề")]         [Required(ErrorMessage = "Hãy nhập mô tả")]         [StringLength(256)]         public string CategoryDes { get; set; }          [Display(Name = "Thứ tự xuất hiện")]         [Required(ErrorMessage = "Hãy nhập thứ tự")]          public int OrderNo { get; set; }          [Display(Name = "Trạng thái")]         [StringLength(32)]         public string Auth_status { get; set; }         [Display(Name = "Ghi chú")]         public string Notes { get; set; }          [Display(Name = "Ngày tạo")]         public Nullable<System.DateTime> Create_DT { get; set; }          public int Record_Status { get; set; }         [Display(Name = "Người duyệt")]         public string Checker_ID { get; set; }         [Display(Name = "Ngày xuất bản")]         public Nullable<System.DateTime> Publish_DT { get; set; }         public string AuthorId { get; set; }          public virtual BlogMember Author { get; set; }         public ICollection<BlogPost> BlogPosts { get; set; }     } } 

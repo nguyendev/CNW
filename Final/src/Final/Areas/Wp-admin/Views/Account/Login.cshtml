@@ -56,8 +56,8 @@
             <a href="Account/LogOn"><b>Đăng nhập hệ thống</b></a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Yêu cầu đăng nhập</p>
             <div class="text-danger" asp-validation-summary="All"></div>
+            <p class="login-box-msg">Yêu cầu đăng nhập</p>
             <form asp-action="Login" method="post">
                 <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
                 <hr />

@@ -6,119 +6,91 @@
 }
 <section class="content-header">
     <h1>
-        T?o ng??i dùng
+        Tao nguoi dung
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Qu?n tr?</a></li>
-        <li class="active">Qu?n lý ng??i dùng</li>
-        <li class="activi">T?o ng??i dùng</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Quan tri</a></li>
+        <li class="active">Quan ly nguoi dung</li>
+        <li class="activi">Tao nguoi dung</li>
     </ol>
 </section>
 <section class="content">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
+        <div class="col-md-12">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <form asp-action="Submit">
+                <div class="form-horizontal">
 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">T?o ng??i dùng</h3>
-                                    <div asp-validation-summary="All" class="text-danger"></div>
-                                    <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
-                                </div><!-- /.box-header -->
-                                <div class="box-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Báo cáo trang l?a ??o tr?c tuy?n</h2>
+                        </div><!-- /.box-header -->
+                        <div class="panel-body">
+                            <p>Hãy nh?p trang web mà b?n c?m th?y là l?a g?t tr?c tuy?n vào ?ây, vi?c làm c?a b?n s? giúp ích cho r?t nhi?u ng??i. Chúng tôi s? có nh?ng hành ??ng c?n thi?t ?? x? lý nh?ng website này</p>
+                            <div class="form-group">
+                                <label asp-for="URL" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input type="url" asp-for="URL" class="form-control" />
+                                    <span asp-validation-for="URL" class="text-danger" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="g-recaptcha" data-sitekey="6Lfd2A8UAAAAAEBsxMi4memnS3SB3IZnXnZddGMb" data-callback='doSomething'></div>
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                </div>
+                            </div>
 
-                                    <form asp-action="Create">
-                                        <div class="form-horizontal">
-                                            <h4>BlogPost</h4>
-                                            <hr />
-                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                            <div class="form-group">
-                                                <label asp-for="Auth_status" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Auth_status" class="form-control" />
-                                                    <span asp-validation-for="Auth_status" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="AuthorId" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="CategoryId" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Checker_ID" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Checker_ID" class="form-control" />
-                                                    <span asp-validation-for="Checker_ID" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Content" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Content" class="form-control" />
-                                                    <span asp-validation-for="Content" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Create_DT" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Create_DT" class="form-control" />
-                                                    <span asp-validation-for="Create_DT" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Notes" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Notes" class="form-control" />
-                                                    <span asp-validation-for="Notes" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Publish_DT" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Publish_DT" class="form-control" />
-                                                    <span asp-validation-for="Publish_DT" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="URL" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="URL" class="form-control" />
-                                                    <span asp-validation-for="URL" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-offset-2 col-md-10">
-                                                    <input type="submit" value="Create" class="btn btn-default" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
 
-                                    <div>
-                                        <a asp-action="Index">Back to List</a>
-                                    </div>
+                            <div class="form-group">
+                                <label asp-for="Content" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <textarea asp-for="Content">Easy (and free!) You should check out our premium features.</textarea>
+                                    <span asp-validation-for="Content" class="text-danger" />
+                                </div>
+                            </div>
 
-                                    @section Scripts {
-                                        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-                                    }
+                        </div>
+
+                        <div class="panel-footer">
+                            <div class="form-group">
+                                <div class="col-md-10"></div>
+                                <div class="pull-right col-md-2">
+                                    <input style="display: none" id="togglee" type="submit" value="G?i" class="btn btn-success" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script type="text/javascript" language="javascript">
+                            function doSomething() {
+                                var isCaptchaValidated = false;
+                                var response = grecaptcha.getResponse();
+                                if (response.length == 0) {
+                                    isCaptchaValidated = false;
+                                    alert('vui lòng xác th?c b?n không là robot');
+                                } else {
+                                    isCaptchaValidated = true;
+                                }
+
+
+                                if (isCaptchaValidated) {
+                                    document.getElementById('togglee').style.display = 'block';
+                                    //you can now submit your form
+                                }
+                            }
+
+            </script>
         </div>
     </div>
 </section>
