@@ -1,20 +1,22 @@
-﻿@{
-    ViewData["Title"] = "RP - Báo cáo lừa đảo trực tuyến";
+@model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
+
+@{
+    ViewData["Title"] = "Details";
     string scheme = Context.Request.Scheme;
     string host = Context.Request.Host.Host;
     string port = Context.Request.Host.Port.ToString();
     string path = Context.Request.Path;
     string url = string.Format("{0}://{1}:{2}{3}", scheme, host, port, Context.Request.Path);
 }
-@model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
+
 <!--/services-->
 <section id="services" class="section pad-bot5">
     <div class="container">
         <div>
             <div class="col-md-9 ">
-                <div class="box box-success box-solid">
+                <div class="box box-primary box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Danh sách gần đây</h3>
+                        <h3 class="box-title">Duyệt các chủ đề</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -38,8 +40,8 @@
                             <div class="col-md-7">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a asp-controller="posts" asp-action="details" asp-route-id ="@item.ID">@item.ID</a>
-                                       
+                                        <a asp-controller="posts" asp-action="details" asp-route-id="@item.ID">@item.ID</a>
+
                                     </div>
                                 </div>
                                 <div class="row">
@@ -72,7 +74,8 @@
                                 </div>
                             </div>
                         </div>
-                            <hr>
+                        <hr>
+
                     }
                 </div>
                 <!-- /.box-body -->
@@ -124,9 +127,9 @@
                             <div class="col-md-10">
                                 <a asp-action="">@item.CategoryName</a>
                             </div>
-                                    <div class="col-md-2">
-                                        <div class="badge">@item.BlogPosts.Count()</div>
-                                    </div>
+                            @*<div class="col-md-2">
+                                <div class="badge">@item.BlogPosts.Count()</div>
+                            </div>*@
 
                         }
                     </div>
@@ -139,6 +142,3 @@
         </div>
     </div>
 </section>
-
-
-

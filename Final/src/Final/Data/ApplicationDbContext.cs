@@ -170,8 +170,9 @@ namespace Final.Data
                      Publish_DT = DateTime.Now,
                      Create_DT = DateTime.Now,
                      Notes = "example",
-                     ID = "http://letrianthang.com"
-                 },
+                     ID = "letrianthang.com"
+                     
+            },
                  new BlogPost
                  {
                      CategoryId = 2,
@@ -182,7 +183,7 @@ namespace Final.Data
                      Publish_DT = DateTime.Now,
                      Create_DT = DateTime.Now,
                      Notes = "example",
-                     ID = "http://traogiaichinhthuc.net"
+                     ID = "traogiaichinhthuc.net"
                  },
                  new BlogPost
                  {
@@ -194,7 +195,7 @@ namespace Final.Data
                      Publish_DT = DateTime.Now,
                      Create_DT = DateTime.Now,
                      Notes = "example",
-                     ID = "http://websitechinhchu.com"
+                     ID = "websitechinhchu.com"
                  }
                 );
                 await context.SaveChangesAsync();

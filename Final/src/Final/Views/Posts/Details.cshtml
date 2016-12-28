@@ -1,0 +1,125 @@
+@model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
+
+@{
+    ViewData["Title"] = "Chi tiet website";
+    string scheme = Context.Request.Scheme;
+    string host = Context.Request.Host.Host;
+    string port = Context.Request.Host.Port.ToString();
+    string path = Context.Request.Path;
+    string url = string.Format("{0}://{1}:{2}{3}", scheme, host, port, Context.Request.Path);
+}
+
+<section id="services" class="section pad-bot5">
+    <div class="container">
+        <div class="col-md-9 ">
+            @foreach (var item in Model.Post.ToList())
+            {
+                <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">@item.ID</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-body">
+                        <div class="col-md-2 text-center">
+                            <a class="btn btn-app">
+                                <span class="badge bg-red">0</span>
+                                <i class="fa fa-heart-o"></i> Likes
+                            </a>
+                            <p><strong>0</strong> lươt xem</p>
+                        </div>
+                        <div class="col-md-10">
+                            đã cập nhật cách đây <strong>10h</strong> trong <a href="">@item.Category.CategoryName</a> bởi <a href="/member/admin" class="qa-user-link">admin</a>
+                            <hr />
+                            <p>@item.Content</p>
+                            <br />
+
+                            <div id="share-buttons">
+                                Chia sẻ và like bây giờ
+                                <a href="@string.Format("http://www.facebook.com/sharer.php?u={0}",@url)" target="_blank">
+                                    <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                                </a>
+
+                                <!-- Google+ -->
+                                <a href="@string.Format("https://plus.google.com/share?url={0}",@url)" target="_blank">
+                                    <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+                                </a>
+                                <div class="fb-like" data-href="@string.Format("https://plus.google.com/share?url={0}",@url)" data-width="20" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+                <!-- /.box-body -->
+                                    }
+            <div class="fb-comments" data-href="@string.Format("https://plus.google.com/share?url={0}",@url)" data-width="820" data-numposts="5"></div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tìm kiếm</h3>
+                    <span class="label label-warning pull-right"><i class="fa fa-search-plus"></i></span>
+                    <!-- /.box-tools -->
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form method="get" action="./search">
+                        <input type="text" class="form-control" id="inputSuccess" placeholder="Enter ...">
+                    </form>
+                </div>
+            </div>
+            <div class="bg-blue-active form-group text-center">
+                <br />
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <a class="btn btn-warning btn-lg btn-block" href="/home/submit">Submit</a>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <br />
+            </div>
+
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Chuyên mục</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    @foreach (var item in Model.Cateogory.ToList())
+                    {
+                        <div class="col-md-10">
+                            <a asp-action="">@item.CategoryName</a>
+                        </div>
+                        @*<div class="col-md-2">
+                                <div class="badge">@item.BlogPosts.Count()</div>
+                            </div>*@
+
+                    }
+                </div>
+            </div>
+            <img src="http://v3.oasearch.net/images/51wZrJpDNuL._SX408_BO1,204,203,200_.jpg" class="img-responsive" />
+
+            <!-- /.box-body -->
+        </div>
+
+    </div>
+</section>

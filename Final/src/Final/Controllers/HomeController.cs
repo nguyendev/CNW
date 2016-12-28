@@ -11,6 +11,7 @@ using Final.Models;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Final.Areas.Wp_admin.ViewModels;
 
 namespace Final.Controllers
 {
@@ -23,17 +24,16 @@ namespace Final.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            DashboardViewModels vm = new DashboardViewModels();
+            vm.Cateogory = _context.Category.Where(p => p.Auth_status == "A" && p.Record_Status == 1).ToList();
+            vm.Post = _context.Post.Where(p => p.Auth_status == "A" && p.Record_Status == 1).ToList();
+            return View(vm);
         }
 
         public IActionResult Submit()
         {
             //ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
-            return View();
-        }
-        public IActionResult Test()
-        {
             return View();
         }
         // POST: Post/Create
@@ -43,7 +43,9 @@ namespace Final.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Submit([Bind("ID,Auth_status,AuthorId,CategoryId,Checker_ID,Content,Create_DT,Notes,Publish_DT,URL")] BlogPost blogPost)
         {
-            blogPost.ID = blogPost.URL;
+            var host = new System.Uri(blogPost.URL).Host;
+            var domain = host.Substring(host.LastIndexOf('.', host.LastIndexOf('.') - 1) + 1);
+            blogPost.ID = domain;
             if (ModelState.IsValid)
             {
                 blogPost.Auth_status = "U";
@@ -53,6 +55,14 @@ namespace Final.Controllers
                 return RedirectToAction("Index");
             }
             return View(blogPost);
+        }
+        public  IActionResult Success()
+        {
+            return View(); 
+        }
+        public IActionResult NotFound()
+        {
+            return View();
         }
         //public async Task<string> UploadImage()
         //{

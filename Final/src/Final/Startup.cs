@@ -90,6 +90,15 @@ namespace Final
             loggerFactory.AddDebug();
 
             app.UseStatusCodePages();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Home/NotFound";
+                    await next();
+                }
+            });
             app.UseDeveloperExceptionPage();
             app.UseApplicationInsightsRequestTelemetry();
 
@@ -132,6 +141,10 @@ namespace Final
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("CategoriesInfo", "danh-muc/{id}",
+                  new { controller = "Categories", action = "Details" });
+                routes.MapRoute("PostsInfo", "url/{id}",
+                 new { controller = "Posts", action = "Details" });
             });
             ApplicationDbContext.CreateExampleAccount(app.ApplicationServices, Configuration).Wait();
             ApplicationDbContext.CreateExampleCategory(app.ApplicationServices).Wait();

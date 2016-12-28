@@ -1,20 +1,17 @@
-﻿@{
-    ViewData["Title"] = "RP - Báo cáo lừa đảo trực tuyến";
-    string scheme = Context.Request.Scheme;
-    string host = Context.Request.Host.Host;
-    string port = Context.Request.Host.Port.ToString();
-    string path = Context.Request.Path;
-    string url = string.Format("{0}://{1}:{2}{3}", scheme, host, port, Context.Request.Path);
-}
 @model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
+
+@{
+    ViewData["Title"] = "Index";
+}
+
 <!--/services-->
 <section id="services" class="section pad-bot5">
     <div class="container">
         <div>
             <div class="col-md-9 ">
-                <div class="box box-success box-solid">
+                <div class="box box-primary box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Danh sách gần đây</h3>
+                        <h3 class="box-title">Duyệt các chủ đề</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -24,55 +21,25 @@
                         <!-- /.box-tools -->
                     </div>
                     <!-- /.box-header -->
-                    @foreach (var item in Model.Post.Take(20))
+                    @foreach (var item in Model.Cateogory.Take(20))
                     {
                         <div class="box-body">
-                            <div class="col-md-2 text-center">
-                                <br />
-                                <a class="btn btn-app">
-                                    <span class="badge bg-red">0</span>
-                                    <i class="fa fa-heart-o"></i> Likes
-                                </a>
-                                <p><strong>0</strong> lươt xem</p>
-                            </div>
-                            <div class="col-md-7">
+                            <div class="container">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <a asp-controller="posts" asp-action="details" asp-route-id ="@item.ID">@item.ID</a>
-                                       
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <br />
                                     <div class="col-md-2">
-                                        <a href="/member/admin" class="">
-                                            <img src="~/AdminLTE/dist/img/admin.png" class="img-responsive" width="50" height="40" 50 alt="admin website">
-                                        </a>
+                                        <a class="btn btn-sm btn-default btn-flat btn-default" asp-action="Details" asp-controller="Categories" asp-route-id="@item.CategoryId">
+                                            <i class="">@item.CategoryName</i>
+                                            <span class="badge bg-green">@item.BlogPosts.Count()</span>
+                                        </a> 
                                     </div>
                                     <div class="col-md-10">
-                                        <p>
-                                            đã cập nhật cách đây <strong>10h</strong> trong <a href="">@item.Category.CategoryName</a> bởi <a href="/member/admin" class="qa-user-link">admin</a>
-                                        </p>
+                                        <span class="bg-warning">@item.CategoryDes</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <br /><br />
-                                    <div id="share-buttons" class="text-center">
-                                        <a href="@string.Format("http://www.facebook.com/sharer.php?u={0}",@url)" target="_blank">
-                                            <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
-                                        </a>
-
-                                        <!-- Google+ -->
-                                        <a href="@string.Format("https://plus.google.com/share?url={0}",@url)" target="_blank">
-                                            <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
-                                        </a>
-                                    </div>
+                               
                                 </div>
                             </div>
                         </div>
-                            <hr>
+                        
                     }
                 </div>
                 <!-- /.box-body -->
@@ -124,9 +91,9 @@
                             <div class="col-md-10">
                                 <a asp-action="">@item.CategoryName</a>
                             </div>
-                                    <div class="col-md-2">
-                                        <div class="badge">@item.BlogPosts.Count()</div>
-                                    </div>
+                            <div class="col-md-2">
+                                <div class="badge">@item.BlogPosts.Count()</div>
+                            </div>
 
                         }
                     </div>
@@ -139,6 +106,4 @@
         </div>
     </div>
 </section>
-
-
 

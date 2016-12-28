@@ -1,0 +1,76 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Submit thành công";
+    Layout = null;
+}
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewData["Title"] - Final</title>
+
+    <link href="~/AdminLTE/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/AdminLTE.min.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <div class="content" style="background-color: #ecf0f5;">
+            <br />
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <form asp-action="Submit">
+                        <div class="form-horizontal">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Báo cáo đã gửi</h2>
+                                </div><!-- /.box-header -->
+                                <div class="panel-body">
+                                    <p>Báo cáo đã gửi</p>
+
+                                    <p>Cảm ơn bạn đã gửi báo cáo cho chúng tôi. Vì bạn đã thực hiện hành động tốt trong ngày, vui lòng:</p>
+
+                                    <p>1. Dành một giây để vui mừng về việc bạn đã tham gia làm cho web trở thành một nơi an toàn hơn.</p>
+
+                                    <p>2. Gọi điện thoại/gửi email/viết thư cho hàng xóm/bạn bè/người thân và cho họ biết lừa đảo là gì và cách họ có thể tự bảo vệ mình.</p>
+
+                                    <p>3. Tìm hiểu thêm về phần mềm độc hại có thể lây nhiễm máy tính của bạn trên <a href="http://stopbadware.org">Stopbadware.org.</a></p>
+
+
+                                </div>
+
+                                <div class="panel-footer">
+                                    <div class="container">
+                                        
+                                            <a href="/home/index" class="btn btn-default">Quay lại trang chủ</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <script src="~/lib/jquery/dist/jquery.js"></script>
+                   
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

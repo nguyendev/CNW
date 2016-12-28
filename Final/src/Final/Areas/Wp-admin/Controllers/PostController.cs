@@ -62,7 +62,9 @@ namespace Final.Areas.Wp_admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Auth_status,AuthorId,CategoryId,Checker_ID,Content,Create_DT,Notes,Publish_DT,URL")] BlogPost blogPost)
         {
-            blogPost.ID = blogPost.URL;
+            var host = new System.Uri(blogPost.URL).Host;
+            var domain = host.Substring(host.LastIndexOf('.', host.LastIndexOf('.') - 1) + 1);
+            blogPost.ID = domain;
             if (ModelState.IsValid)
             {
                 blogPost.Auth_status = "U";

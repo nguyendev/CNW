@@ -33,9 +33,6 @@ body {
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	 font-family: "Raleway", Helvetica, Arial, sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-	
-}
 
 h1,h2,h3,h4,h5,h6 {
 	font-style: normal;
@@ -368,7 +365,6 @@ i.service-icon:hover {
   color: #417630;
 }
 
-}
 .service-col p {
   font-size: 0.875em;
   font-weight: 200;
@@ -898,7 +894,7 @@ section.featured h2.slogan {
 	margin-bottom:20px;
 	color:#fff;
 	padding:10px;
-	background:#3a906d;
+	background-color: transparent;
 }
 
 @media (max-width: 767px) {
@@ -910,7 +906,9 @@ section.featured h2.slogan {
     }
 }
 
-.carousel-inner .form-inline .form-group button[type="livedemo"]{
+.carousel-inner .form-inline .form-group button[type="livedemo"],
+.carousel-inner .form-inline .form-group a[class="getnow"]
+{
 	padding:20px 60px;
 	font-size:20px;
 	background:#3a906d;
@@ -920,7 +918,9 @@ section.featured h2.slogan {
 	text-transform:uppercase;
 }
 
-.carousel-inner .form-inline .form-group button[type="livedemo"]:hover {
+.carousel-inner .form-inline .form-group button[type="livedemo"]:hover,
+.carousel-inner .form-inline .form-group a[class="getnow"]:hover
+ {
 	color:#fff;
 	opacity: 0.8;
 	-webkit-transition: color 300ms, background-color 300ms;
@@ -929,7 +929,8 @@ section.featured h2.slogan {
   transition:  color 300ms, background-color 300ms;
 }
 
-.carousel-inner .form-inline .form-group button[type="getnow"]{
+.carousel-inner .form-inline .form-group button[type="getnow"],
+.carousel-inner .form-inline .form-group a[class="livenow"] {
 	padding:20px 60px;
 	font-size:20px;
 	background:#fff;
@@ -938,7 +939,9 @@ section.featured h2.slogan {
 	text-transform:uppercase;
 }
 
-.carousel-inner .form-inline .form-group button[type="getnow"]:hover {
+.carousel-inner .form-inline .form-group button[type="getnow"]:hover,
+.carousel-inner .form-inline .form-group a[class="livenow"]:hover
+{
 	color:#fff;
 	border-color:#fff;
 	background:#3a906d;
@@ -1917,3 +1920,5 @@ Media queries
 		margin-bottom: 30px;
 	}
 }
+
+
