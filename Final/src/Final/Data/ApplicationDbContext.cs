@@ -52,7 +52,7 @@ namespace Final.Data
                 {
                     UserName = usernameadmin,
                     Email = emailadmin,
-                    ImageURL1 = "/AdminLTE/dist/img/user3-128x128.png"
+                    ImageURL1 = "~/AdminLTE/dist/img/admin.png"
 
                 };
                 IdentityResult result = await userManager
@@ -72,7 +72,8 @@ namespace Final.Data
                 BlogMember userco = new BlogMember
                 {
                     UserName = usernamecollaborator,
-                    Email = emailcollaborator
+                    Email = emailcollaborator,
+                    ImageURL1 = "~/AdminLTE/dist/img/user3-160x160.png"
                 };
                 IdentityResult result = await userManager
                 .CreateAsync(userco, passwordcollaborator);
@@ -92,7 +93,7 @@ namespace Final.Data
                 {
                     UserName = usernameguest,
                     Email = emailguest,
-                    ImageURL1 = "/AdminLTE/dist/img/user2-160x160.png"
+                    ImageURL1 = "~/AdminLTE/dist/img/user2-160x160.jpg"
                 };
                 IdentityResult result = await userManager
                 .CreateAsync(userguest, passwordguest);
@@ -107,8 +108,6 @@ namespace Final.Data
             using (var context = new ApplicationDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
-
-
                 if (context.Category.Any())
                 {
                     return;   // DB has been seeded
@@ -117,7 +116,6 @@ namespace Final.Data
                  new BlogCategory
                  {
                      CategoryName = "Đăng nhập facebook",
-                     CategoryId = 1,
                      OrderNo = 1,
                      Auth_status = "A",
                      Record_Status = 1,
@@ -130,7 +128,6 @@ namespace Final.Data
                  {
                      CategoryName = "Nạp tiền điện thoại",
                      OrderNo = 1,
-                     CategoryId = 2,
                      Auth_status = "A",
                      Record_Status = 1,
                      CategoryDes = "Các trang web đề nghị nạp tiền điện thoại",
@@ -142,7 +139,6 @@ namespace Final.Data
                  {
                      CategoryName = "Nạp thẻ game",
                      OrderNo = 1,
-                     CategoryId = 3,
                      Auth_status = "A",
                      Record_Status = 1,
                      CategoryDes = "Các trang web đề nghị nạp thẻ game",
@@ -151,26 +147,21 @@ namespace Final.Data
                      Notes = "example"
                  }
                 );
-
                 await context.SaveChangesAsync();
             }
-
         }
         public static async Task CreateExamplePost(IServiceProvider serviceProvider)
         {
             using (var context = new ApplicationDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
-
-
                 if (context.Post.Any())
                 {
                     return;   // DB has been seeded
                 }
                 context.Post.AddRange(
                  new BlogPost
-                 {
-                     
+                 {    
                      CategoryId = 1,
                      URL = "http://letrianthang.com",
                      Content = "Trang web này thông báo rằng bạn đã trúng thưởng trên Zalo và yêu cần bạn nhập tài khoản Zalo vào để lãnh thưởng",
@@ -206,18 +197,14 @@ namespace Final.Data
                      ID = "http://websitechinhchu.com"
                  }
                 );
-
                 await context.SaveChangesAsync();
             }
-
         }
         public static async Task CreateExampleAuth(IServiceProvider serviceProvider)
         {
             using (var context = new ApplicationDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
-
-
                 if (context.SYS_AUTH_STATUS.Any())
                 {
                     return;   // DB has been seeded
@@ -233,10 +220,8 @@ namespace Final.Data
                      AUTH_STATUS_NAME = "Chờ duyệt",
                      AUTH_STATUS = "U"
                  });
-
                 await context.SaveChangesAsync();
             }
-
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

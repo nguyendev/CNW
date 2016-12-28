@@ -260,10 +260,8 @@ E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\IUserRepository.
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\ReflectionControllerAction.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\RoleUsersTagHelper.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\ServiceCollectionExtensions.cs
-E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228030655_new.cs
-E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228030655_new.Designer.cs
-E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228075801_image.cs
-E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228075801_image.Designer.cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228083105_Init.cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228083105_Init.Designer.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\ApplicationDbContextModelSnapshot.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Models\BlogCategory.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Models\BlogMember.cs

@@ -12,7 +12,7 @@ using Final.Data;
 namespace Final.Areas.Wp_admin.Controllers
 {
     [Area("wp-admin")]
-    //[Authorize]
+    [Authorize(Roles = "Collaborator")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;

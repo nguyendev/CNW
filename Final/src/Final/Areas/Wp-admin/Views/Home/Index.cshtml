@@ -5,12 +5,11 @@
 @model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
 <section class="content-header">
     <h1>
-       
-        
+        Dashboard
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-        <li></li>
+        <li><a href="#">Manager</a></li>
+        <li class="active">Dashboard</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -40,7 +39,7 @@
                 <div class="icon">
                     <i class="icon ion-android-list"></i>
                 </div>
-                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="/wp-admin/category/index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -53,7 +52,7 @@
                 <div class="icon">
                     <i class="icon ion-person-add"></i>
                 </div>
-                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="/wp-admin/member/index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -66,7 +65,7 @@
                 <div class="icon">
                     <i class="icon ion-android-person"></i>
                 </div>
-                <a href="/Home/Staff/StaffInfo/Index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="/wp-admin/role/index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     </div>
@@ -87,16 +86,224 @@
                         @foreach (var user in Model.Member.Take(4))
                         {
                             <li>
-                                <img src=@user.ImageURL1 alt="User Image">
+                                <img src="@user.ImageURL1" alt="User Image">
                                 <a class="users-list-name" href="#">@user.UserName</a>
                             </li>
                         }
                     </ul><!-- /.users-list -->
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="javascript::" class="uppercase">Xem toàn bộ</a>
+                    <a href="javascript::" class="uppercase">View all</a>
                 </div><!-- /.box-footer -->
             </div><!--/.box -->
+            <div class="box box-default collapsed-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Unapproved post</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="display: none;">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            @if (Model.Post.Where(p => p.Auth_status == "U" && p.Record_Status == 1).Count() == 0)
+                            {
+                                <tr><td colspan="4" class="text-center">Not Exits</td></tr>
+                            }
+                            else
+                            {
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Post.First().URL)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Post.First().Content)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Post.First().Category.CategoryName)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Post.Where(p => p.Auth_status == "U" && p.Record_Status == 1).ToList())
+                                {   @if (item.Auth_status == "U")
+                                    {
+                                    <tr>
+                                        <td class="col-sm-3">
+                                            @Html.DisplayFor(modelItem => item.URL)
+                                        </td>
+                                        <td class="col-sm-5">
+                                            @Html.DisplayFor(modelItem => item.Content)
+                                        </td>
+                                        <td class="col-sm-4">
+                                            <span class="label label-success">@Html.DisplayFor(modelItem => item.Category.CategoryName)</span>
+                                        </td>
+                                        
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                          }
+                        </table>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer" style="display: none;">
+                    Visit <a href="/wp-admin/post/index">Post Manager</a> for more information
+                </div>
+            </div>
         </div><!-- /.col -->
+        <div class="col-md-6">
+                <!-- Info Boxes Style 2 -->
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fa fa-question"></i></span>
+
+                    <div class="info-box-content">
+                        <a href="/wp-admin/post/index"><span class="info-box-text">Unapproved Post</span></a>
+                        <span class="info-box-number">@Model.Post.Where(p => p.Auth_status == "U" && p.Record_Status == 1).Count()</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <div class="box box-warning direct-chat direct-chat-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Chat</h3>
+
+                        <div class="box-tools pull-right">
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">0</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+                                <i class="fa fa-comments"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            
+                        </div>
+                        <!--/.direct-chat-messages-->
+                        <!-- Contacts are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                @*<li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Count Dracula
+                                                <small class="contacts-list-date pull-right">2/28/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Sarah Doe
+                                                <small class="contacts-list-date pull-right">2/23/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I will be waiting for...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nadia Jolie
+                                                <small class="contacts-list-date pull-right">2/20/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I'll call you back at...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nora S. Vans
+                                                <small class="contacts-list-date pull-right">2/10/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Where is your new...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                John K.
+                                                <small class="contacts-list-date pull-right">1/27/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Can I take a look at...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Kenneth M.
+                                                <small class="contacts-list-date pull-right">1/4/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Never mind I found...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>*@
+                                <!-- End Contact Item -->
+                            </ul>
+                            <!-- /.contatcts-list -->
+                        </div>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-warning btn-flat">Send</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-footer-->
+            </div>
         </div>
+    </div>
 </section>  

@@ -13,7 +13,7 @@ using Final.Models.ManageViewModels;
 namespace Final.Areas.QuanLyWebsite.Controllers
 {
     [Area("quanlywebsite")]
-    [Authorize]
+    [Authorize(Roles = "Collaborator")]
     public class ManageController : Controller
     {
         private readonly UserManager<BlogMember> _userManager;
