@@ -13,9 +13,11 @@ namespace Final.Data
 {
     public class ApplicationDbContext : IdentityDbContext<BlogMember>
     {
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
 
         public static async Task CreateExampleAccount(IServiceProvider serviceProvider,
@@ -49,7 +51,9 @@ namespace Final.Data
                 BlogMember useradmin = new BlogMember
                 {
                     UserName = usernameadmin,
-                    Email = emailadmin
+                    Email = emailadmin,
+                    ImageURL1 = "/AdminLTE/dist/img/user3-128x128.png"
+
                 };
                 IdentityResult result = await userManager
                 .CreateAsync(useradmin, passwordadmin);
@@ -87,7 +91,8 @@ namespace Final.Data
                 BlogMember userguest = new BlogMember
                 {
                     UserName = usernameguest,
-                    Email = emailguest
+                    Email = emailguest,
+                    ImageURL1 = "/AdminLTE/dist/img/user2-160x160.png"
                 };
                 IdentityResult result = await userManager
                 .CreateAsync(userguest, passwordguest);

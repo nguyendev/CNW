@@ -9,5 +9,7 @@ namespace Final.Models
     // Add profile data for application users by adding properties to the BlogMember class
     public class BlogMember : IdentityUser
     {
+        public string ImageURL { get; set; }
+        public string ImageURL1 { get; set; }
     }
 }

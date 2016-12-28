@@ -243,6 +243,8 @@ E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\Controllers\Mana
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\Controllers\MemberController.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\Controllers\PostController.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\Controllers\RoleController.cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\ViewModels\DashboardViewModels .cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\ViewModels\User.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Areas\Wp-admin\ViewModels\UserViewModels.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Controllers\HomeController.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Controllers\ManageController.cs
@@ -260,6 +262,8 @@ E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\RoleUsersTagHelp
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Infrastructure\ServiceCollectionExtensions.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228030655_new.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228030655_new.Designer.cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228075801_image.cs
+E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\20161228075801_image.Designer.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Migrations\ApplicationDbContextModelSnapshot.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Models\BlogCategory.cs
 E:\Project\CNW\version\1.2\trunk\Final\src\Final\Models\BlogMember.cs
