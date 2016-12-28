@@ -32,7 +32,7 @@ namespace Final.Areas.Admin.Controllers
         {
             return View(_userManager.Users);
         }
-        [Route("create")]
+        //[Route("create")]
         public ViewResult Create() => View();
 
         [HttpPost]

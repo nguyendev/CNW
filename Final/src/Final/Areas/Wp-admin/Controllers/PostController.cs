@@ -99,7 +99,7 @@ namespace Final.Areas.Wp_admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,Auth_status,AuthorId,CategoryId,Checker_ID,Content,Create_DT,Notes,Publish_DT,URL")] BlogPost blogPost)
+        public async Task<IActionResult> Edit(string id, [Bind("ID,Auth_status,AuthorId,CategoryId,Checker_ID,Content,Notes,Publish_DT,URL")] BlogPost blogPost)
         {
             if (id != blogPost.ID)
             {
@@ -111,6 +111,8 @@ namespace Final.Areas.Wp_admin.Controllers
                 try
                 {
                     blogPost.Publish_DT = DateTime.Now;
+                    blogPost.Record_Status = 1;
+                    blogPost.Create_DT = DateTime.Now;
                     _context.Update(blogPost);
                     await _context.SaveChangesAsync();
                 }

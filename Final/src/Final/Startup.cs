@@ -134,8 +134,9 @@ namespace Final
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             ApplicationDbContext.CreateExampleAccount(app.ApplicationServices, Configuration).Wait();
-            ApplicationDbContext.CreateExampleCategory(app.ApplicationServices);
-            ApplicationDbContext.CreateExampleAuth(app.ApplicationServices);
+            ApplicationDbContext.CreateExampleCategory(app.ApplicationServices).Wait();
+            ApplicationDbContext.CreateExampleAuth(app.ApplicationServices).Wait();
+            ApplicationDbContext.CreateExamplePost(app.ApplicationServices).Wait();
         }
     }
 }

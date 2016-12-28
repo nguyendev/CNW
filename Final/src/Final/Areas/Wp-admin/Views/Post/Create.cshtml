@@ -18,16 +18,16 @@
     <div class="row">
         <div class="col-md-12">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <form asp-action="Submit">
+            <form asp-action="Create">
                 <div class="form-horizontal">
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2 class="panel-title">Báo cáo trang l?a ??o tr?c tuy?n</h2>
+                            <h2 class="panel-title">Bao cao trang lua dao truc tuyen</h2>
                         </div><!-- /.box-header -->
                         <div class="panel-body">
-                            <p>Hãy nh?p trang web mà b?n c?m th?y là l?a g?t tr?c tuy?n vào ?ây, vi?c làm c?a b?n s? giúp ích cho r?t nhi?u ng??i. Chúng tôi s? có nh?ng hành ??ng c?n thi?t ?? x? lý nh?ng website này</p>
+                            <p></p>
                             <div class="form-group">
                                 <label asp-for="URL" class="col-md-2 control-label"></label>
                                 <div class="col-md-10">
@@ -63,13 +63,14 @@
                             <div class="form-group">
                                 <div class="col-md-10"></div>
                                 <div class="pull-right col-md-2">
-                                    <input style="display: none" id="togglee" type="submit" value="G?i" class="btn btn-success" />
+                                    <input style="display: none" id="togglee" type="submit" value="Send" class="btn btn-success" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
             <script src="~/lib/jquery/dist/jquery.js"></script>
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
             <script type="text/javascript" language="javascript">

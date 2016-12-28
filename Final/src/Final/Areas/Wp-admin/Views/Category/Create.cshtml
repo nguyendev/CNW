@@ -7,12 +7,12 @@
 
 <section class="content-header">
     <h1>
-        T?o ng??i dùng
+        Create Category
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Qu?n tr?</a></li>
-        <li class="active">Qu?n lý ng??i dùng</li>
-        <li class="activi">T?o ng??i dùng</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Manager</a></li>
+        <li class="active">Category Manager</li>
+        <li class="activi">Create Category</li>
     </ol>
 </section>
 <section class="content">
@@ -27,55 +27,44 @@
                         <div class="col-xs-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">T?o ng??i dùng</h3>
-                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <h3 class="box-title">Create</h3>
                                     <span class="label label-success pull-right"><i class="fa fa-search-plus"></i></span>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <form asp-action="Create">
                                         <div class="form-horizontal">
-                                            <h4>BlogCategory</h4>
-                                            <hr />
                                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                             <div class="form-group">
                                                 <label asp-for="CategoryName" class="col-md-2 control-label"></label>
                                                 <div class="col-md-10">
-                                                    <input asp-for="CategoryName" class="form-control" />
+                                                    <input type="text" asp-for="CategoryName" class="form-control" />
                                                     <span asp-validation-for="CategoryName" class="text-danger" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CategoryDes" class="col-md-2 control-label"></label>
+                                                <div class="col-md-10">
+                                                    <input asp-for="CategoryDes" class="form-control" />
+                                                    <span asp-validation-for="CategoryDes" class="text-danger" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="OrderNo" class="col-md-2 control-label"></label>
                                                 <div class="col-md-10">
-                                                    <input asp-for="OrderNo" class="form-control" />
+                                                    <input type="number" asp-for="OrderNo" class="form-control" />
                                                     <span asp-validation-for="OrderNo" class="text-danger" />
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label asp-for="Status" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="Status" class="form-control" />
-                                                    <span asp-validation-for="Status" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="UserId" class="col-md-2 control-label"></label>
-                                                <div class="col-md-10">
-                                                    <input asp-for="UserId" class="form-control" />
-                                                    <span asp-validation-for="UserId" class="text-danger" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-offset-2 col-md-10">
-                                                    <input type="submit" value="Create" class="btn btn-default" />
-                                                </div>
-                                            </div>
+                           
+                                        </div>
+                                        <div class="box-footer clearfix">
+                                            <a asp-action="Index" class="btn btn-sm btn-default btn-flat pull-left">Back to List</a>
+                                            <input type="submit" value="Create" class="btn btn-sm btn-warning btn-flat pull-right" />
                                         </div>
                                     </form>
 
-                                    <div>
-                                        <a asp-action="Index">Back to List</a>
-                                    </div>
+                                    
 
                                     @section Scripts {
                                         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

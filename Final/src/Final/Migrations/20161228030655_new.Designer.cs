@@ -8,8 +8,8 @@ using Final.Data;
 namespace Final.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161227100837_Init2")]
-    partial class Init2
+    [Migration("20161228030655_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

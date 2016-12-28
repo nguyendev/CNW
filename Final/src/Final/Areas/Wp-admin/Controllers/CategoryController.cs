@@ -55,7 +55,7 @@ namespace Final.Areas.Wp_admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,OrderNo,Status,UserId")] BlogCategory blogCategory)
+        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDes,OrderNo,Status,UserId")] BlogCategory blogCategory)
         {
             if (ModelState.IsValid)
             {
@@ -90,18 +90,16 @@ namespace Final.Areas.Wp_admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,OrderNo,Status,UserId")] BlogCategory blogCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,CategoryDes,OrderNo,Notes,Record_Status,Publish_DT")] BlogCategory blogCategory)
         {
-            if (id != blogCategory.CategoryId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    blogCategory.Auth_status = "A";
                     blogCategory.Publish_DT = DateTime.Now;
+                    blogCategory.Record_Status = 1;
+
                     _context.Update(blogCategory);
                     await _context.SaveChangesAsync();
                 }
@@ -134,28 +132,39 @@ namespace Final.Areas.Wp_admin.Controllers
             {
                 return NotFound();
             }
-
-            return View(blogCategory);
-        }
-
-        // POST: Category/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var blogCategory = await _context.Category.SingleOrDefaultAsync(m => m.CategoryId == id);
             try
             {
                 if (blogCategory.Auth_status.Equals("U"))
                     _context.Category.Remove(blogCategory);
                 else
+                { 
                     blogCategory.Record_Status = 0;
+                    _context.Update(blogCategory);
+                }
                 await _context.SaveChangesAsync();
             }
             catch (Exception) { }
-            
             return RedirectToAction("Index");
         }
+
+        // POST: Category/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var blogCategory = await _context.Category.SingleOrDefaultAsync(m => m.CategoryId == id);
+        //    try
+        //    {
+        //        if (blogCategory.Auth_status.Equals("U"))
+        //            _context.Category.Remove(blogCategory);
+        //        else
+        //            blogCategory.Record_Status = 0;
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (Exception) { }
+            
+        //    return RedirectToAction("Index");
+        //}
 
         private bool BlogCategoryExists(int id)
         {
