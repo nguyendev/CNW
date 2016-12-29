@@ -14,7 +14,6 @@ namespace Final.Areas.Admin.Controllers
 {
     [Area("wp-admin")]
     [Authorize(Roles = "Admins")]
-    [Authorize(Roles = "Collaborator")]
     public class RoleController : Controller
     {
         private RoleManager<IdentityRole> _roleManager;

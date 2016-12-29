@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Final.Areas.Wp_admin.Controllers
 {
     [Area("wp-admin")]
-    [Authorize(Roles = "Collaborator")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
