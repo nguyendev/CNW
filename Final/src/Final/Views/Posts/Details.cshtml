@@ -1,7 +1,8 @@
 @model Final.Areas.Wp_admin.ViewModels.DashboardViewModels
 
 @{
-    ViewData["Title"] = "Chi tiet website";
+    string title = Model.Post.FirstOrDefault().ID;
+    ViewData["Title"] = "Thông tin website lừa đảo " + title;
     string scheme = Context.Request.Scheme;
     string host = Context.Request.Host.Host;
     string port = Context.Request.Host.Port.ToString();

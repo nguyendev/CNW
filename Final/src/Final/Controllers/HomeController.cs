@@ -22,11 +22,17 @@ namespace Final.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchstring)
         {
             DashboardViewModels vm = new DashboardViewModels();
             vm.Cateogory = _context.Category.Where(p => p.Auth_status == "A" && p.Record_Status == 1).ToList();
+
             vm.Post = _context.Post.Where(p => p.Auth_status == "A" && p.Record_Status == 1).ToList();
+
+            if (!String.IsNullOrEmpty(searchstring))
+            {
+                vm.Post = vm.Post.Where(s => s.ID.Contains(searchstring)).ToList();
+            }
             return View(vm);
         }
 
@@ -50,9 +56,10 @@ namespace Final.Controllers
             {
                 blogPost.Auth_status = "U";
                 blogPost.Create_DT = DateTime.Now;
+                blogPost.Record_Status = 1;
                 _context.Add(blogPost);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Success");
             }
             return View(blogPost);
         }

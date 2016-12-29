@@ -1,14 +1,14 @@
 ﻿
 @model Final.Models.BlogPost
 @{
-    ViewData["Title"] = "RP - Báo cáo lừa đảo trực tuyến";
+    ViewData["Title"] = "Report Phish - Gửi một trang web lừa đảo trực tuyến";
     Layout = null;
 }
 @using PaulMiami.AspNetCore.Mvc.Recaptcha
 <html>
 <head>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>@ViewData["Title"] - Final</title>
+    <title>@ViewData["Title"]</title>
 
     <link href="~/AdminLTE/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -63,7 +63,7 @@
                                     <div class="form-group">
                                         <label asp-for="Content" class="col-md-2 control-label"></label>
                                         <div class="col-md-10">
-                                            <textarea asp-for="Content">Easy (and free!) You should check out our premium features.</textarea>
+                                            <input asp-for="Content" class="form-control"/>
                                             <span asp-validation-for="Content" class="text-danger" />
                                         </div>
                                     </div>

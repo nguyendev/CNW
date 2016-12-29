@@ -29,17 +29,21 @@
                                     <div class="col-md-2">
                                         <a class="btn btn-sm btn-default btn-flat btn-default" asp-action="Details" asp-controller="Categories" asp-route-id="@item.CategoryId">
                                             <i class="">@item.CategoryName</i>
+@if (item.BlogPosts != null)
+{
                                             <span class="badge bg-green">@item.BlogPosts.Count()</span>
+}   
                                         </a> 
                                     </div>
+                                   
                                     <div class="col-md-10">
                                         <span class="bg-warning">@item.CategoryDes</span>
                                     </div>
-                               
+                                    
                                 </div>
                             </div>
                         </div>
-                        
+
                     }
                 </div>
                 <!-- /.box-body -->
