@@ -127,9 +127,12 @@
                             <div class="col-md-10">
                                 <a asp-action="">@item.CategoryName</a>
                             </div>
-                            @*<div class="col-md-2">
+                            if (item.BlogPosts != null)
+                            {
+                            <div class="col-md-2">
                                 <div class="badge">@item.BlogPosts.Count()</div>
-                            </div>*@
+                            </div>
+                            }
 
                         }
                     </div>

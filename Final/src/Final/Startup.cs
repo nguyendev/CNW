@@ -98,6 +98,11 @@ namespace Final
                     context.Request.Path = "/Home/NotFound";
                     await next();
                 }
+                if (context.Response.StatusCode == 401)
+                {
+                    context.Request.Path = "/Home/Unauthorized";
+                    await next();
+                }
             });
             app.UseDeveloperExceptionPage();
             app.UseApplicationInsightsRequestTelemetry();

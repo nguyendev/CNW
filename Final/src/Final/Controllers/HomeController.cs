@@ -64,6 +64,10 @@ namespace Final.Controllers
         {
             return View();
         }
+        public IActionResult Unauthorized()
+        {
+            return View();
+        }
         //public async Task<string> UploadImage()
         //{
         //    HttpResponseMessage response = new HttpResponseMessage();
